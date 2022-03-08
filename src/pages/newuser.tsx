@@ -1,9 +1,12 @@
+import { FormNewUser } from "../components/FormNewUser";
+import { TextNewUser } from "../components/TextNewUser";
 
 
 export const NewUser = () => {
     return (
         <>
-            <h1>Criação do novo Usúario</h1>
+            <TextNewUser />
+            <FormNewUser />
         </>
     )
 }

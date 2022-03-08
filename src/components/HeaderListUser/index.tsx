@@ -7,7 +7,7 @@ export const HeaderListUser = () => {
             <div className={styles.headerListUser}>
                 <div>
                     <p>
-                        <h1>Listagens de Usuários</h1>
+                        <h1>Listagens de usuários</h1>
                         <p>Escolha um cliente para editar os detalhes</p>
                     </p>
                     <Link href={'./newuser'}>
