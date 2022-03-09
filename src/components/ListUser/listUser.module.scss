@@ -1,0 +1,40 @@
+.listUserDiv {
+    width: 100%;
+    max-width: 1320px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #efefef;
+    border-radius: 2px;
+    margin-top: 50px;
+    padding: 20px;
+
+    p {
+        h1 {
+            font-size: 18px;
+            font-weight: 300;
+        }
+
+        p {
+            color: #a2a3a0;
+        }
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+
+        p {
+            margin-left: 6px;
+            color: #a2a3a0;
+        }
+    }
+
+    .divStatus {
+        background-color: green;
+        width: 14px;
+        height: 14px;
+        border-radius: 100%;
+    }
+}

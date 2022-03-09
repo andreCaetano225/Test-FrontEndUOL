@@ -1,5 +1,6 @@
 import styles from './formNewUser.module.scss';
 import Link from 'next/link';
+import { ButtonApp } from '../ButtonApp';
 
 export const FormNewUser = () => {
     return (
@@ -12,9 +13,11 @@ export const FormNewUser = () => {
                     <input type="text" placeholder="Telefone" />
                 </form>
                 <div>
-                    <button className={styles.buttonCriar}>Criar</button>
+                    <ButtonApp text='Criar' backgroundColor={true} />
                     <Link href={'/'}>
-                        <button className={styles.buttonVoltar}>Voltar</button>
+                        <a>
+                            <ButtonApp text='Voltar' backgroundColor={false} />
+                        </a>
                     </Link>
                 </div>
             </div>
