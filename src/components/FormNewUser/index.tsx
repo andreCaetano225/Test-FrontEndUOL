@@ -27,10 +27,10 @@ export const FormNewUser = () => {
         resolver: yupResolver(schema)
     });
     const onSubmit = useCallback((data: Customers) => {
-        // setNewUser(data)
-        customersDB.push(data);
-        console.log(data);
+        customersDB.push(data)
+        localStorage.setItem("customersDB", JSON.stringify(customersDB));
         router.push("/");
+        console.log(customersDB)
     }, []);
 
     return (
