@@ -5,26 +5,32 @@ import InputMask from 'react-input-mask';
 import * as yup from "yup";
 import { ButtonApp } from "../ButtonApp";
 import Link from "next/link";
-import { useCallback } from "react";
-
-interface IFormInputs {
-    firstName: string;
-    email: number;
-}
+import { useCallback, useState } from "react";
+import { customersDB } from "../../data/customers";
+import { Customers } from "../../models/customers.model";
+import { useRouter } from "next/router";
 
 
 
 export const FormNewUser = () => {
+    const router = useRouter();
+
     const schema = yup.object({
-        firstName: yup.string().required('Digite seu Nome'),
+        name: yup.string().required('Digite seu Nome'),
         email: yup.string().required('Digite seu E-mail'),
+        id: yup.string().required('Digite um CPF valido'),
+        phone: yup.string().required('Digite seu Telefone'),
+        status: yup.string().required('Selecione um Status')
     }).required();
 
-    const { register, handleSubmit, formState: { errors } } = useForm<IFormInputs>({
+    const { register, handleSubmit, formState: { errors } } = useForm<Customers>({
         resolver: yupResolver(schema)
     });
-    const onSubmit = useCallback((data: IFormInputs) => {
-        console.log(data)
+    const onSubmit = useCallback((data: Customers) => {
+        // setNewUser(data)
+        customersDB.push(data);
+        console.log(data);
+        router.push("/");
     }, []);
 
     return (
@@ -33,14 +39,24 @@ export const FormNewUser = () => {
             <div className={styles.divFormNewUser}>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <input {...register("firstName")} type='text' placeholder="Nome" />
-                    <p style={{ color: 'red' }}>{errors.firstName?.message}</p>
-
+                    <input {...register("name")} type='text' placeholder="Nome" />
+                    <p style={{ color: 'red' }}>{errors.name?.message}</p>
                     <input {...register("email")} type='email' placeholder="E-mail" style={{ marginTop: '5px' }} />
                     <p style={{ color: 'red' }}>{errors.email?.message}</p>
-                    <InputMask mask={"999.999.999-99"} placeholder="CPF" maskChar={null} />
-                    <InputMask mask={"(99)99999-9999"} placeholder="Telefone" maskChar={null} />
+                    <InputMask mask={"999.999.999-99"} placeholder="CPF" maskChar={null} {...register("id")} />
+                    <p style={{ color: 'red' }}>{errors.id?.message}</p>
+                    <InputMask mask={"(99)99999-9999"} placeholder="Telefone" maskChar={null} {...register("phone")} />
+                    <p style={{ color: 'red' }}>{errors.phone?.message}</p>
+                    <select  {...register("status")}>
+                        <option disabled selected hidden style={{ color: '#a2a3a0' }}>Status</option>
+                        <option value="active">Ativo</option>
+                        <option value="inactive">Inativo</option>
+                        <option value="waiting">Aguardando ativação</option>
+                        <option value="disabled">Desativado</option>
+                    </select>
+                    <p style={{ color: 'red' }}>{errors.status?.message}</p>
                     <div style={{ marginTop: '20px' }}>
+
                         <ButtonApp text='Criar' backgroundColor={true} type='submit' />
                         <Link href={'/'}>
                             <a>

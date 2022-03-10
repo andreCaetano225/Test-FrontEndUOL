@@ -7,10 +7,12 @@
     justify-content: space-between;
     border: 1px solid #efefef;
     border-radius: 2px;
-    margin-top: 50px;
+    margin-top: 20px;
     padding: 20px;
 
     p {
+        width: 225px;
+
         h1 {
             font-size: 18px;
             font-weight: 300;
@@ -22,6 +24,7 @@
     }
 
     div {
+
         display: flex;
         align-items: center;
 
