@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { BiErrorCircle } from "react-icons/bi"
 import { yupResolver } from '@hookform/resolvers/yup';
 import styles from './formNewUser.module.scss';
 import InputMask from 'react-input-mask';
@@ -35,12 +36,9 @@ export const FormNewUser = () => {
 
     return (
         <>
-
             <div className={styles.divFormNewUser}>
-
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input {...register("name")} type='text' placeholder="Nome" />
-                    <p style={{ color: 'red' }}>{errors.name?.message}</p>
                     <input {...register("email")} type='email' placeholder="E-mail" style={{ marginTop: '5px' }} />
                     <p style={{ color: 'red' }}>{errors.email?.message}</p>
                     <InputMask mask={"999.999.999-99"} placeholder="CPF" maskChar={null} {...register("id")} />
@@ -65,7 +63,20 @@ export const FormNewUser = () => {
                         </Link>
                     </div>
                 </form>
+
+
             </div>
+            <div className={styles.errorMensage}>
+                {errors.name &&
+                    <div >
+                        <span>
+                            <BiErrorCircle />
+                            <p >{errors.name?.message}</p>
+                        </span>
+                    </div>
+                }
+            </div>
+
         </>
 
     );

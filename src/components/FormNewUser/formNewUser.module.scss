@@ -38,7 +38,34 @@
 
     }
 
+}
 
+
+.errorMensage {
+    width: 100%;
+    max-width: 1320px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+
+
+    div {
+        height: 50px;
+        width: 190px;
+        background-color: #e53e3e;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        border-radius: 20px;
+
+
+        span {
+            width: 147px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
 }
 
 @media (max-width: 480px) {
