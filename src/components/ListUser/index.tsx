@@ -5,40 +5,11 @@ import { useCallback, useEffect, useState } from 'react';
 import { customersDB } from '../../data/customers';
 import { StatusUser } from '../StatusUser';
 import { Customers } from '../../models/customers.model';
-
-interface ListUserProps {
-    data: Customers[];
-}
-
+import { ListUserProps, useListUser } from './listUser.hooks';
 
 export const ListUser = (props: ListUserProps) => {
-    const [items, setItems] = useState<Customers[]>([]);
-    const [itemsu, setItemsu] = useState({});
 
-    useEffect(() => {
-        const storageItem = localStorage.getItem("customersDB")
-        const jsonItem = JSON.parse(storageItem as any)
-        if (jsonItem == null) {
-            setItems(props.data);
-
-        } else {
-            setItems(jsonItem);
-        }
-    }, [])
-
-    const onClickTeste: React.MouseEventHandler<HTMLButtonElement> = useCallback((
-        ev
-    ) => {
-        let dataset = (ev.target as HTMLButtonElement).dataset
-        setItemsu({
-            id: dataset['id'],
-            name: dataset['name'],
-            email: dataset['email'],
-            phone: dataset['phone'],
-            status: dataset['status']
-        })
-        console.log(itemsu)
-    }, [itemsu, items])
+    const { items, onClickTeste } = useListUser(props)
 
     return (
         <>
@@ -60,9 +31,9 @@ export const ListUser = (props: ListUserProps) => {
                                 </span>
                                 {/* <Link href={'./newuser'}> */}
 
-                                <button onClick={onClickTeste} data-name={x.name} data-id={x.id} data-email={x.email} data-phone={x.phone} data-status={x.status}>
+                                {/* <button onClick={onClickTeste} data-name={x.name} data-id={x.id} data-email={x.email} data-phone={x.phone} data-status={x.status}>
                                     test
-                                </button>
+                                </button> */}
                                 {/* </Link> */}
 
                                 <Link href={'./newuser'}>
