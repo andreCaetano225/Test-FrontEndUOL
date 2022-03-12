@@ -1,9 +1,10 @@
 import { BiErrorCircle } from "react-icons/bi"
 import styles from './formNewUser.module.scss';
-import InputMask from 'react-input-mask';
 import { ButtonApp } from "../ButtonApp";
 import Link from "next/link";
 import { useFormNewUser } from "./formNewUser.hooks";
+import InputMask from 'react-input-mask';
+
 
 
 
