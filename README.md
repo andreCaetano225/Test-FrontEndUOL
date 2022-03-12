@@ -9,7 +9,7 @@ Teste front-end - UOL Produtos Digitais
 ## Visualização do projeto
 
  Deploy feito na Vercel para testar a aplicação. 
- Para visualizar o projeto em "produção" ("")
+ Para visualizar o projeto em "produção" (https://test-front-end-uol.vercel.app/)
 
 
 ## Tecnologias Utilizadas
