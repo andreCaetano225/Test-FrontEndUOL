@@ -19,8 +19,8 @@ export const FormNewUser = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input {...register("name")} type='text' placeholder="Nome" />
                     <input {...register("email")} type='email' placeholder="E-mail" style={{ marginTop: '5px' }} />
-                    <InputMask mask={"999.999.999-99"} placeholder="CPF" {...register("id")} maskChar=" " />
-                    <InputMask mask={"(99)99999-9999"} placeholder="Telefone"  {...register("phone")} maskChar=" " />
+                    <InputMask mask={"999.999.999-99"} placeholder="CPF" {...register("id")} />
+                    <InputMask mask={"(99)99999-9999"} placeholder="Telefone"  {...register("phone")} />
                     <select  {...register("status")}>
                         <option disabled selected hidden style={{ color: '#a2a3a0' }}>Status</option>
                         <option value="active">Ativo</option>
